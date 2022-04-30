@@ -1,15 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const showTime = () => {
+const root = ReactDOM.createRoot(document.getElementById("root"));
+let val = 5;
+const reRender = () => {
     root.render(
         <div>
-            <h1>heading 1</h1>
-            <h2>
-                it's {new Date().toLocaleTimeString()}
-            </h2>
+            <div>
+                value {val}
+            </div>
+            <button onClick={
+                () => {
+                    val++;
+                    console.log(val);
+                    reRender();
+                }
+            }>button</button>
         </div>
-    );
-}
-const root = ReactDOM.createRoot(document.getElementById("root"));
-setInterval(showTime,1000);
+    )
+};
+
+reRender();
